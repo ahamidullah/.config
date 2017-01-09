@@ -1,0 +1,12 @@
+#!/usr/bin/env bash
+
+i686-elf-as boot.s -o boot.o
+i686-elf-gcc -c kernel.c -o kernel.o -std=gnu90 -ffreestanding -O2 -Wall -Wextra -fdiagnostics-color=never
+i686-elf-gcc -c tty.c -o tty.o -std=gnu90 -ffreestanding -O2 -Wall -Wextra -fdiagnostics-color=never
+i686-elf-gcc -c idt.c -o idt.o -std=gnu90 -ffreestanding -O2 -Wall -Wextra -fdiagnostics-color=never
+i686-elf-gcc -c lib.c -o lib.o -std=gnu90 -ffreestanding -O2 -Wall -Wextra -fdiagnostics-color=never
+i686-elf-gcc -c gdt.c -o gdt.o -std=gnu90 -ffreestanding -O2 -Wall -Wextra -fdiagnostics-color=never
+i686-elf-gcc -T linker.ld -o os.bin -ffreestanding -O2 -nostdlib boot.o kernel.o tty.o idt.o lib.o gdt.o -lgcc
+cp os.bin iso/boot
+genisoimage -R -b boot/grub/stage2_eltorito -no-emul-boot -boot-load-size 4 -boot-info-table -o os.iso iso
+qemu-system-i386 -cdrom os.iso

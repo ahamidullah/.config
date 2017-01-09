@@ -1,5 +1,0 @@
-double_me x = x + x
-double_us x y = double_me x + double_me y
-double_small_num x = if x > 100
-			then x
-			else x*2
