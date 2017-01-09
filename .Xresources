@@ -1,0 +1,17 @@
+URxvt.background: #ffffd7
+URxvt.scrollBar: false
+emacs.font: -misc-fixed-medium-r-semicondensed--13-*-*-*-c-60-iso8859-1
+!xterm*locale: true
+!xterm*foreground: Black
+!xterm*cursorColor: Black
+!xterm*background: #ffffd7
+!xterm*eightBitInput: false
+!xterm*metaSendsEscape: true
+!xterm*scrollBar: off
+!xterm*savelines: 65536
+!xterm*scrollTtyOutput: false
+!Xft.dpi: 96
+
+URxvt.translations: #override \
+ <Key>Up: scroll-back(1, halfpage) \n\
+ <Key>Down: scroll-forw(1, halfpage)

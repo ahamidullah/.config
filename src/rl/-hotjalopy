@@ -1,0 +1,19 @@
+~/src/rl$ ls
+debug.h   render.cpp  rl*     shared.cpp  tile.png
+Makefile  render.h    rl.cpp  shared.h
+~/src/rl$ rm debug.h
+~/src/rl$ ls
+Makefile  render.cpp  render.h	rl*  rl.cpp  shared.cpp  shared.h  tile.png
+~/src/rl$ make
+g++ *.cpp -fno-diagnostics-color -O0 -g -std=c++14 -DDEBUG=1 -Wall -Wextra -Wfloat-equal -Wundef -Wshadow -Wpointer-arith -Wcast-align -Wstrict-overflow -Wwrite-strings -L/usr/X11R6/lib/ -lSDL2 -lSDL2_image -o rl
+render.cpp:3:19: fatal error: debug.h: No such file or directory
+ #include "debug.h"
+                   ^
+compilation terminated.
+rl.cpp:2:19: fatal error: debug.h: No such file or directory
+ #include "debug.h"
+                   ^
+compilation terminated.
+Makefile:8: recipe for target 'all' failed
+make: *** [all] Error 1
+~/src/rl$ 

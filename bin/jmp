@@ -1,0 +1,30 @@
+#!/usr/bin/env bash
+
+function j() {
+	if [[ "$#" -ne "1" && "$#" -ne "2" ]]; then
+		echo "Usage: j [r] dir"
+		exit
+	fi
+	
+	if [[ -d "$1" && ("$1" == /* || "$1" == ./*) ]]; then
+		path="$(cd "$(dirname "$1")"; pwd)/$(basename "$1")"
+		if [[ -f jlist && "${dir=$(grep \^$path\$ jlist)}" ]]; then
+			echo "j: directory $1 already exists as $path. Use \"j r [dir]\" to remove"
+		else
+			echo "$path" >> jlist
+		fi
+		exit
+	fi
+	
+	if [[ -f jlist && "${dir=$(grep /$1[^/]*$ jlist)}" ]]; then
+		if [[ $(echo "$dir" | wc -l) -eq "1" ]]; then
+			echo "$dir"
+		else
+			echo "j: multiple matches:"
+			echo "$dir"
+		fi
+		exit
+	fi
+	echo "j: $1 not found"
+
+}

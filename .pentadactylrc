@@ -1,0 +1,16 @@
+nnoremap s :tabopen startpage 
+nnoremap S :open startpage 
+nnoremap q :b #<CR>
+nnoremap d :b #<CR>yyb #<CR>db <C-v><CR>
+nnoremap <C-h> :bprevious<CR>
+nnoremap <C-l> :bnext<CR>
+set showtabline=never
+map <F6> :set showtabline!=always,never<CR>
+set scrollsteps=1
+set scrolltime=0
+set incfind
+set hlfind
+map -b j 8j
+map -b k 8k
+map -b h 8h
+map -b l 8l

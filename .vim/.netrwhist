@@ -1,0 +1,5 @@
+let g:netrw_dirhistmax  =10
+let g:netrw_dirhist_cnt =3
+let g:netrw_dirhist_1='/home/steve/dev/hw/cg/A2SteerLite'
+let g:netrw_dirhist_2='/home/steve/dev/hw/cg/A2SteerLite/steerlib'
+let g:netrw_dirhist_3='/home/steve/dev/hw/cg/A2SteerLite/steerlib/src'
